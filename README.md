@@ -1,2 +1,4 @@
 # OpenPointList-Application
-Application to use and manage Open Point Lists.  Qt Creator, a cross-plattform to create User Interfaces is and follows LGPL License.
+Application to use and manage Open Point Lists.  
+
+This appication depends on Qt Creator and carry-over its LGPL license model.

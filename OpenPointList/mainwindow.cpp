@@ -289,6 +289,7 @@ void MainWindow::readFromFile(const QString &fileName)
 
     QDataStream in(&file);
     in >> m_openpointItems;
+    in >> projectname;
 
     ui->lineEdit->setText(projectname);
 

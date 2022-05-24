@@ -3,5 +3,5 @@ Default save filename: YYYYMMDD_Projectname_counter
 Color coding for Priority and Status Entries in Table (Green/Yellow/Red)
 Link Responsible Person in OPL and ContactList
 ProxyFiler for Search and Sort Functions
-pdf, print, powerpoint export function
-Export function to exp0ort tables as JSON
+Pdf, print, powerpoint export function
+Export function to export tables as JSON

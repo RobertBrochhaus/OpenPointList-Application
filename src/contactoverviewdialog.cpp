@@ -85,16 +85,17 @@ void ContactOverviewDialog::on_pushButtonSave_clicked()
 
 void ContactOverviewDialog::writeToFile(const QString &fileName)
 {
-    QFile file(fileName);
+    QFile file2(fileName);
 
-    if (!file.open(QIODevice::WriteOnly)) {
-        QMessageBox::information(this, tr("Unable to open file"), file.errorString());
+    if (!file2.open(QIODevice::WriteOnly)) {
+        QMessageBox::information(this, tr("Unable to open file"), file2.errorString());
         return;
     }
 
-    QDataStream out(&file);
+    QDataStream out(&file2);
     out << m_contactlistModel->getContactItems();
 }
+
 
 void ContactOverviewDialog::on_pushButtonLoad_clicked()
 {

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "contactlistmodel.h"
 #include "openpointlistmodel.h"
 #include "qitemselectionmodel.h"
 #include "sharedcontactlist.h"
@@ -67,6 +68,6 @@ private:
     Ui::MainWindow *ui;
     ContactOverview *contactOverview;
     OpenPointListModel *openpointlistModel;
-
+    ContactListModel *m_contactlistModel;
 };
 #endif // MAINWINDOW_H

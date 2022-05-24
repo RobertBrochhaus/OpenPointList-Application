@@ -38,10 +38,10 @@ void MainWindow::resizeEvent(QResizeEvent *event) {
     ui->tableView->setColumnWidth(1, this->width()*0.225);
     ui->tableView->setColumnWidth(2, this->width()*0.125);
     ui->tableView->setColumnWidth(3, this->width()*0.025);
-    ui->tableView->setColumnWidth(4, this->width()*0.125);
+    ui->tableView->setColumnWidth(4, this->width()*0.100);
     ui->tableView->setColumnWidth(5, this->width()*0.125);
-    ui->tableView->setColumnWidth(6, this->width()*0.125);
-    ui->tableView->setColumnWidth(7, this->width()*0.125);
+    ui->tableView->setColumnWidth(6, this->width()*0.100);
+    ui->tableView->setColumnWidth(7, this->width()*0.175);
 
     QMainWindow::resizeEvent(event);
     ui->tableView->horizontalHeader()->setMaximumSectionSize(this->width());
@@ -248,6 +248,7 @@ void MainWindow::editEntry()
 }
 void MainWindow::writeToFile(const QString &fileName)
 {
+
     QFile file(fileName);
 
     if (!file.open(QIODevice::WriteOnly)) {
@@ -258,7 +259,6 @@ void MainWindow::writeToFile(const QString &fileName)
     QString projectname;
     projectname = ui->lineEdit->text();
 
-
     QDataStream out(&file);
     out << openpointlistModel->OpenPointListModel::getOpenPointItems();
     out << projectname;
@@ -266,10 +266,18 @@ void MainWindow::writeToFile(const QString &fileName)
 
 void MainWindow::on_actionSave_triggered()
 {
-    QString fileName = QFileDialog::getSaveFileName(this);
-    if (!fileName.isEmpty()){
-        MainWindow::writeToFile(fileName);
-    }
+    //QString fileName = QFileDialog::getSaveFileName(this);
+    ContactOverviewDialog contactOverviewDialog;
+
+    //QFile file(fileName);
+
+    MainWindow::writeToFile("SaveFile_OpenPointList");
+    contactOverviewDialog.writeToFile("SaveFile_ContactList");
+
+    //if (!file.open(QIODevice::WriteOnly)) {
+    //    QMessageBox::information(this, tr("Unable to open file"), file.errorString());
+    //    return;
+    //}
 }
 
 void MainWindow::readFromFile(const QString &fileName)
@@ -281,6 +289,7 @@ void MainWindow::readFromFile(const QString &fileName)
             file.errorString());
         return;
     }
+
 
     QString projectname;
     QVector<OpenPointListItem> m_openpointItems;
@@ -305,13 +314,16 @@ void MainWindow::readFromFile(const QString &fileName)
                      openpointlistitem.entrydate,
                      openpointlistitem.status);
     }
+
 }
 
 void MainWindow::on_actionLoad_triggered()
 {
-    QString fileName = QFileDialog::getOpenFileName(this);
-    if (!fileName.isEmpty())
-        MainWindow::readFromFile(fileName);
+    ContactOverviewDialog contactOverviewDialog;
+
+    //QString fileName = QFileDialog::getOpenFileName(this);
+    //if (!fileName.isEmpty())
+
+    MainWindow::readFromFile("SaveFile_OpenPointList");
+    contactOverviewDialog.readFromFile("SaveFile_ContactList");
 }
-
-

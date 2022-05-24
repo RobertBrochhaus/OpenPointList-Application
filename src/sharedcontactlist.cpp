@@ -2,8 +2,6 @@
 
 SharedContactList::SharedContactList()
 {
- // Add test data
- m_contactItems.append( ContactItem("Nachname", "Vorname", "Firma", "Rolle", "Mail", "Telefon"));
 }
 
 

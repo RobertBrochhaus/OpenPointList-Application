@@ -179,7 +179,7 @@ void MainWindow::editEntry()
 
         QModelIndex responsibleIndex = openpointlistModel->index(row, 5, QModelIndex());
         QVariant varResponsible = openpointlistModel->data(responsibleIndex, Qt::DisplayRole);
-        responsible = varTask.toString();
+        responsible = varResponsible.toString();
 
         QModelIndex entrydateIndex = openpointlistModel->index(row, 6, QModelIndex());
         QVariant varEntrydate = openpointlistModel->data(entrydateIndex, Qt::DisplayRole);
@@ -192,7 +192,6 @@ void MainWindow::editEntry()
     }
 
     EditOpenPointItemDialog editOpenPointDialog;
-    editOpenPointDialog.setWindowTitle(tr("Edit a Contact"));
     editOpenPointDialog.editOpenPointListItem(subject, task, result, risk, schedulefinish, responsible, entrydate, status);
 
     if (editOpenPointDialog.exec()) {

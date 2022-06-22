@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../00_WIP/src/editopenpointitemdialog.h"
+#include "../../00_WIP/OpenPointList-Application/src/editopenpointitemdialog.h"
 #include <QtGui/qtextcursor.h>
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>

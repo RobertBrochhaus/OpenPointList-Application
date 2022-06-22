@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../00_WIP/src/openpointlistmodel.h"
+#include "../../00_WIP/OpenPointList-Application/src/openpointlistmodel.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)

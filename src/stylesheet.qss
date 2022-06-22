@@ -55,12 +55,19 @@ QPushButton {
 }
 
 QTableView {
+
 }
-QHeaderView::section {
+
+QHeaderView:section {
     font: bold 10px;
     border: 0.5px solid lightgray;
     background-color: rgb(242,242,242);
 }
+
+QMenuBar  {
+    background: white;
+}
+
 
 MainWindow {
 background-color: white;

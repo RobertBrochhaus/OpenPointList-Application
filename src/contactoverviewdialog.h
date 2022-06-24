@@ -4,6 +4,7 @@
 #include "contactlistmodel.h"
 #include <QItemSelection>
 #include <QDialog>
+#include <QFile>
 
 namespace Ui {
 class ContactOverviewDialog;
@@ -19,16 +20,14 @@ public:
 
     void mousePressEvent(QMouseEvent *event);
 
-    void writeToFile(const QString &fileName);
+    void writeToFile(QFile &file);
 
-    void readFromFile(const QString &fileName);
+    void readFromFile(QFile &file);
 
     void addItem(ContactItem item);
 
 
 private slots:
-
-    void on_actionLoad_triggered();
 
     void tableSelectionChanged(const QItemSelection &selected);
 
@@ -40,9 +39,6 @@ private slots:
 
     void on_tableView_activated(const QModelIndex &index);
 
-    void on_pushButtonSave_clicked();
-
-    void on_pushButtonLoad_clicked();
 
 private:
     Ui::ContactOverviewDialog *ui;

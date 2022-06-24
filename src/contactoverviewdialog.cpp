@@ -75,45 +75,15 @@ void ContactOverviewDialog::mousePressEvent(QMouseEvent *event)
   ui->tableView->clearSelection();
 }
 
-void ContactOverviewDialog::on_pushButtonSave_clicked()
+void ContactOverviewDialog::writeToFile(QFile &file)
 {
-    QString fileName = QFileDialog::getSaveFileName(this);
-    if (!fileName.isEmpty()){
-        ContactOverviewDialog::writeToFile(fileName);
-    }
-}
-
-void ContactOverviewDialog::writeToFile(const QString &fileName)
-{
-    QFile file2(fileName);
-
-    if (!file2.open(QIODevice::WriteOnly)) {
-        QMessageBox::information(this, tr("Unable to open file"), file2.errorString());
-        return;
-    }
-
-    QDataStream out(&file2);
+    QDataStream out(&file);
     out << m_contactlistModel->getContactItems();
 }
 
 
-void ContactOverviewDialog::on_pushButtonLoad_clicked()
+void ContactOverviewDialog::readFromFile(QFile &file)
 {
-    QString fileName = QFileDialog::getOpenFileName(this);
-    if (!fileName.isEmpty())
-        ContactOverviewDialog::readFromFile(fileName);
-}
-
-void ContactOverviewDialog::readFromFile(const QString &fileName)
-{
-    QFile file(fileName);
-
-    if (!file.open(QIODevice::ReadOnly)) {
-        QMessageBox::information(this, tr("Unable to open file"),
-            file.errorString());
-        return;
-    }
-
     QList<ContactItem> m_contactItems;
 
     QDataStream in(&file);
@@ -128,9 +98,3 @@ void ContactOverviewDialog::readFromFile(const QString &fileName)
     }
 }
 
-void ContactOverviewDialog::on_actionLoad_triggered()
-{
-    QString fileName = QFileDialog::getOpenFileName(this);
-    if (!fileName.isEmpty())
-        ContactOverviewDialog::readFromFile(fileName);
-}

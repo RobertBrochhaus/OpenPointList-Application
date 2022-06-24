@@ -261,22 +261,17 @@ void MainWindow::writeToFile(const QString &fileName)
     QDataStream out(&file);
     out << openpointlistModel->OpenPointListModel::getOpenPointItems();
     out << projectname;
+
+    ContactOverviewDialog contactOverviewDialog;
+
+    contactOverviewDialog.writeToFile(file);
 }
 
 void MainWindow::on_actionSave_triggered()
 {
-    //QString fileName = QFileDialog::getSaveFileName(this);
-    ContactOverviewDialog contactOverviewDialog;
+    QString fileName = QFileDialog::getSaveFileName(this);
 
-    //QFile file(fileName);
-
-    MainWindow::writeToFile("SaveFile_OpenPointList");
-    contactOverviewDialog.writeToFile("SaveFile_ContactList");
-
-    //if (!file.open(QIODevice::WriteOnly)) {
-    //    QMessageBox::information(this, tr("Unable to open file"), file.errorString());
-    //    return;
-    //}
+    MainWindow::writeToFile(fileName);
 }
 
 void MainWindow::readFromFile(const QString &fileName)
@@ -314,15 +309,14 @@ void MainWindow::readFromFile(const QString &fileName)
                      openpointlistitem.status);
     }
 
+    ContactOverviewDialog contactOverviewDialog;
+    contactOverviewDialog.readFromFile(file);
 }
 
 void MainWindow::on_actionLoad_triggered()
 {
-    ContactOverviewDialog contactOverviewDialog;
 
-    //QString fileName = QFileDialog::getOpenFileName(this);
-    //if (!fileName.isEmpty())
+    QString fileName = QFileDialog::getOpenFileName(this);
 
-    MainWindow::readFromFile("SaveFile_OpenPointList");
-    contactOverviewDialog.readFromFile("SaveFile_ContactList");
+    MainWindow::readFromFile(fileName);
 }

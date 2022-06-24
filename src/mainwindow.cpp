@@ -269,7 +269,11 @@ void MainWindow::writeToFile(const QString &fileName)
 
 void MainWindow::on_actionSave_triggered()
 {
-    QString fileName = QFileDialog::getSaveFileName(this);
+
+    QString projectname;
+    projectname = ui->lineEdit->text();
+
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save as"), QDate::currentDate().toString("yyyyMMdd") + "_" + projectname + ".opl", tr(".opl"));
 
     MainWindow::writeToFile(fileName);
 }
@@ -316,7 +320,7 @@ void MainWindow::readFromFile(const QString &fileName)
 void MainWindow::on_actionLoad_triggered()
 {
 
-    QString fileName = QFileDialog::getOpenFileName(this);
+    QString fileName = QFileDialog::getOpenFileName(this, "Open file", ".", tr("*.opl"));
 
     MainWindow::readFromFile(fileName);
 }

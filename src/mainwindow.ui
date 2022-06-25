@@ -231,6 +231,9 @@
       <property name="frameShape">
        <enum>QFrame::Box</enum>
       </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
       <property name="horizontalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
@@ -248,6 +251,9 @@
       </property>
       <attribute name="horizontalHeaderCascadingSectionResizes">
        <bool>true</bool>
+      </attribute>
+      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+       <bool>false</bool>
       </attribute>
       <attribute name="horizontalHeaderStretchLastSection">
        <bool>false</bool>

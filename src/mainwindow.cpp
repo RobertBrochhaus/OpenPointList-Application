@@ -18,13 +18,29 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     setStyleSheet(":/stylesheet.qss");
 
-    ui->tableView->setModel(openpointlistModel);
+
+
+    //ui->tableView->setModel(openpointlistModel);
     setWindowTitle(tr("OpenPointList Application"));
+
+           auto proxyModel = new QSortFilterProxyModel(this);
+        proxyModel->setSourceModel(openpointlistModel);
+
+        ui->tableView->setModel(proxyModel);
+        ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+        ui->tableView->horizontalHeader()->setStretchLastSection(true);
+        ui->tableView->verticalHeader()->hide();
+        ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
+        ui->tableView->setSortingEnabled(true);
+        ui->tableView->horizontalHeader()->setSortIndicatorClearable(true);
+
 
     connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged,this, &MainWindow::selectionChanged);
     connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged,this, &MainWindow::updateActions);
 
     ui->searchfilterlineEdit->setFixedWidth(120);
+
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)

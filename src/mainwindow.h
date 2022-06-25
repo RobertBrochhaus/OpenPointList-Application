@@ -59,7 +59,6 @@ private slots:
 
     void on_removeitempushButton_clicked();
 
-
 signals:
 
     void selectionChanged (const QItemSelection &selected);

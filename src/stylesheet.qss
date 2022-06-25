@@ -1,3 +1,22 @@
+* {
+    font-size: 14px;
+}
+
+QTableView {
+    font-size: 14px;
+}
+
+QHeaderView:section {
+    font: bold 11px;
+    border: 0.5px solid lightgray;
+    background-color: rgb(242,242,242);
+}
+
+QLineEdit#lineEdit{
+    border: 0px solid lightgray;
+    font-size: 16px;
+}
+
 QLineEdit {
     border: 1px solid lightgray;
     border-radius: 0px;
@@ -8,12 +27,6 @@ QLineEdit:focus
 {
     border-color: darkgrey;
 }
-
-QLineEdit#lineEdit{
-border: 0px solid lightgray;
-
-}
-
 
 QTextEdit {
     border: 1px solid lightgray;
@@ -54,20 +67,15 @@ QPushButton {
     selection-background-color: darkgray;
 }
 
-QTableView {
-
-}
-
-QHeaderView:section {
-    font: bold 10px;
-    border: 0.5px solid lightgray;
+QPushButton:hover {
     background-color: rgb(242,242,242);
 }
+
+
 
 QMenuBar  {
     background: white;
 }
-
 
 MainWindow {
 background-color: white;

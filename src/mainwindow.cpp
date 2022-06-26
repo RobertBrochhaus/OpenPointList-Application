@@ -39,7 +39,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged,this, &MainWindow::selectionChanged);
     connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged,this, &MainWindow::updateActions);
 
-    ui->searchfilterlineEdit->setFixedWidth(120);
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)

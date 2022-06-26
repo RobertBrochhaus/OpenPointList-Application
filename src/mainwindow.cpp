@@ -18,12 +18,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     setStyleSheet(":/stylesheet.qss");
 
-
-
     //ui->tableView->setModel(openpointlistModel);
     setWindowTitle(tr("OpenPointList Application"));
 
-           auto proxyModel = new QSortFilterProxyModel(this);
+
+        auto proxyModel = new QSortFilterProxyModel(this);
         proxyModel->setSourceModel(openpointlistModel);
 
         ui->tableView->setModel(proxyModel);
@@ -33,14 +32,14 @@ MainWindow::MainWindow(QWidget *parent)
         ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
         ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
         ui->tableView->setSortingEnabled(true);
-        ui->tableView->horizontalHeader()->setSortIndicatorClearable(true);
 
+
+        ui->tableView->horizontalHeader()->setSortIndicatorClearable(true);
 
     connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged,this, &MainWindow::selectionChanged);
     connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged,this, &MainWindow::updateActions);
 
     ui->searchfilterlineEdit->setFixedWidth(120);
-
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
@@ -304,7 +303,6 @@ void MainWindow::readFromFile(const QString &fileName)
         return;
     }
 
-
     QString projectname;
     QVector<OpenPointListItem> m_openpointItems;
 
@@ -335,8 +333,6 @@ void MainWindow::readFromFile(const QString &fileName)
 
 void MainWindow::on_actionLoad_triggered()
 {
-
     QString fileName = QFileDialog::getOpenFileName(this, "Open file", ".", tr("*.bin"));
-
     MainWindow::readFromFile(fileName);
 }

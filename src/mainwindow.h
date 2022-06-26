@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSortFilterProxyModel>
 #include "contactlistmodel.h"
 #include "openpointlistmodel.h"
 #include "qitemselectionmodel.h"
@@ -33,6 +34,8 @@ public:
     void writeToFile(const QString &fileName);
     void readFromFile(const QString &fileName);
 
+    void setSourceModel(QAbstractItemModel *model);
+
 public slots:
 
     void on_actionSave_triggered();
@@ -59,6 +62,8 @@ private slots:
 
     void on_removeitempushButton_clicked();
 
+
+
 signals:
 
     void selectionChanged (const QItemSelection &selected);
@@ -68,5 +73,6 @@ private:
     ContactOverview *contactOverview;
     OpenPointListModel *openpointlistModel;
     ContactListModel *m_contactlistModel;
+    QSortFilterProxyModel *proxyModel;
 };
 #endif // MAINWINDOW_H

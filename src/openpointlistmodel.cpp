@@ -1,4 +1,6 @@
 #include "openpointlistmodel.h"
+#include "qbrush.h"
+#include "qfont.h"
 #include <QItemSelection>
 
 OpenPointListModel::OpenPointListModel(QObject *parent)
@@ -53,8 +55,40 @@ QVariant OpenPointListModel::data(const QModelIndex &index, int role) const
             default:
                 break;
         }
-    }
     return QVariant();
+    }
+
+    if (role == Qt::BackgroundRole){
+        const auto &openpointItems = m_openpointItems.at(index.row());
+
+        switch (index.column()){
+            case 3:
+                if (openpointItems.risk == "0_Low")
+                    return QBrush(QColor(127,255,0));
+                if (openpointItems.risk == "1_Middle")
+                    return QBrush(QColor(255, 217, 102));
+                if (openpointItems.risk == "2_High")
+                    return QBrush(QColor(255, 63, 63));
+            default:
+                break;
+        }
+    }
+
+    if (role == Qt::ForegroundRole){
+        const auto &openpointItems = m_openpointItems.at(index.row());
+
+        switch (index.column()){
+            case 3:
+                if (openpointItems.risk == "0_Low")
+                    return QColor(127,255,0);
+                if (openpointItems.risk == "1_Middle")
+                    return QColor(255, 217, 102);
+                if (openpointItems.risk == "2_High")
+                    return QColor(255, 63, 63);
+            default:
+                break;
+        }
+    }return QVariant();
 }
 
 QVariant OpenPointListModel::headerData(int section, Qt::Orientation orientation, int role) const
@@ -113,7 +147,6 @@ bool OpenPointListModel::setData(const QModelIndex &index, const QVariant &value
                 break;
             case 3:
                 openpointItems.risk = value.toString();
-                break;
             case 4:
                 openpointItems.schedulefinish = value.toDate();
                 break;

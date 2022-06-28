@@ -60,17 +60,17 @@
       <widget class="QComboBox" name="riskcomboBox">
        <item>
         <property name="text">
-         <string>Low</string>
+         <string>0_Low</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Middle</string>
+         <string>1_Middle</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>High</string>
+         <string>2_High</string>
         </property>
        </item>
       </widget>

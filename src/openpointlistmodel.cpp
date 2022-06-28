@@ -64,7 +64,7 @@ QVariant OpenPointListModel::data(const QModelIndex &index, int role) const
         switch (index.column()){
             case 3:
                 if (openpointItems.risk == "0_Low")
-                    return QBrush(QColor(127,255,0));
+                    return QBrush(QColor(50,205,50));
                 if (openpointItems.risk == "1_Middle")
                     return QBrush(QColor(255, 217, 102));
                 if (openpointItems.risk == "2_High")
@@ -80,7 +80,7 @@ QVariant OpenPointListModel::data(const QModelIndex &index, int role) const
         switch (index.column()){
             case 3:
                 if (openpointItems.risk == "0_Low")
-                    return QColor(127,255,0);
+                    return QColor(50,205,50);
                 if (openpointItems.risk == "1_Middle")
                     return QColor(255, 217, 102);
                 if (openpointItems.risk == "2_High")

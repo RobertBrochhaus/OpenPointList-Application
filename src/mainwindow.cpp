@@ -21,7 +21,6 @@ MainWindow::MainWindow(QWidget *parent)
     //ui->tableView->setModel(openpointlistModel);
     setWindowTitle(tr("OpenPointList Application"));
 
-
         auto proxyModel = new QSortFilterProxyModel(this);
         proxyModel->setSourceModel(openpointlistModel);
 
@@ -31,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
         ui->tableView->verticalHeader()->hide();
         ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
         ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
+        ui->tableView->horizontalHeader()->setSortIndicator(-1, Qt::AscendingOrder);
         ui->tableView->setSortingEnabled(true);
 
 

@@ -4,7 +4,6 @@ SharedContactList::SharedContactList()
 {
 }
 
-
 SharedContactList* SharedContactList::instance(){
     static SharedContactList* model = new SharedContactList();
     return model;

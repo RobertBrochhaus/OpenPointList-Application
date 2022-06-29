@@ -31,7 +31,6 @@ MainWindow::MainWindow(QWidget *parent)
         ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
         ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
         ui->tableView->horizontalHeader()->setSortIndicator(-1, Qt::AscendingOrder);
-        ui->tableView->setSortingEnabled(true);
 
 
         ui->tableView->horizontalHeader()->setSortIndicatorClearable(true);
@@ -55,7 +54,7 @@ void MainWindow::resizeEvent(QResizeEvent *event) {
     ui->tableView->setColumnWidth(4, this->width()*0.100);
     ui->tableView->setColumnWidth(5, this->width()*0.125);
     ui->tableView->setColumnWidth(6, this->width()*0.100);
-    ui->tableView->setColumnWidth(7, this->width()*0.175);
+    ui->tableView->setColumnWidth(7, QHeaderView::ResizeToContents);
 
     QMainWindow::resizeEvent(event);
     ui->tableView->horizontalHeader()->setMaximumSectionSize(this->width());
@@ -102,7 +101,7 @@ void MainWindow::addEntry(const QString &subject, const QString &task, const QSt
 
 void MainWindow::on_tableView_activated(const QModelIndex &index)
 {
-     if(index.row() >= 0 && index.row() < 2){
+     if(index.row() >= 0 && index.row() < 50){
         editEntry();
      }
 }
